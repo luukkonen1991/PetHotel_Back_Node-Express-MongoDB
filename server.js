@@ -12,12 +12,19 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 // Route files
+const locations = require('./routes/locations');
+
 
 const app = express();
+
+//Body parser
+app.use(express.json());
 
 // Set static folser
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Mount routes
+app.use('/api/v1/locations', locations);
 
 
 const PORT = process.env.PORT || 5000;

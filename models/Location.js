@@ -31,9 +31,9 @@ const LocationSchema = new mongoose.Schema({
     type: [String],
     required: true,
     enum: [
-      'Dog',
-      'Cat',
-      'Other'
+      'Dogs',
+      'Cats',
+      'Others'
     ]
   },
   services: {
@@ -60,3 +60,11 @@ const LocationSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+LocationSchema.pre('save', function (next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
+})
+
+
+module.exports = mongoose.model('Location', LocationSchema);
