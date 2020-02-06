@@ -3,10 +3,13 @@ const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
 
+const connectDB = require('./config/db')
+
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
 // connect to database
+connectDB();
 
 // Route files
 
