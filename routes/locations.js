@@ -1,7 +1,8 @@
 const express = require('express');
 const {
   getLocations,
-  getLocation
+  getLocation,
+  createLocation
 } = require('../controllers/locations');
 
 const Location = require('../models/Location');
@@ -9,7 +10,8 @@ const Location = require('../models/Location');
 const router = express.Router();
 
 router.route('/')
-  .get(getLocations);
+  .get(getLocations)
+  .post(createLocation)
 
 router.route('/:id')
   .get(getLocation);

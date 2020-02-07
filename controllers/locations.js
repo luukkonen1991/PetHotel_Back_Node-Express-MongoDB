@@ -38,3 +38,19 @@ exports.getLocation = async (req, res, next) => {
     next(error);
   }
 }
+
+//@desc       Create new location
+//@route      POST /api/v1/locations/:id
+//@access     Private
+exports.createLocation = async (req, res, next) => {
+  try {
+    const location = await Location.create(req.body);
+    console.log(location);
+    res.status(201).json({
+      success: true,
+      data: location
+    });
+  } catch (error) {
+    next(error)
+  }
+}
