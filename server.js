@@ -37,9 +37,6 @@ app.use('/api/v1/locations', locations);
 
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-  res.json('Hello World!');
-});
 
 const server = app.listen(PORT, () => {
   console.log(`App listening on port ${PORT} on mode ${process.env.NODE_ENV}`.yellow.bold);

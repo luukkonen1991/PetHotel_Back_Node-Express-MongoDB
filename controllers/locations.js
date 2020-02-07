@@ -30,27 +30,65 @@ exports.getLocation = async (req, res, next) => {
         success: false
       });
     }
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       data: location
     });
   } catch (error) {
     next(error);
   }
-}
+};
 
-//@desc       Create new location
-//@route      POST /api/v1/locations/:id
+//@desc       Create location
+//@route      POST /api/v1/locations
 //@access     Private
 exports.createLocation = async (req, res, next) => {
   try {
-    const location = await Location.create(req.body);
-    console.log(location);
+    const location = await Location.create(req.body)
     res.status(201).json({
       success: true,
       data: location
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
+
+//@desc       Update location
+//@route      PUT /api/v1/locations/:id
+//@access     Private
+exports.updateLocation = async (req, res, next) => {
+  try {
+    const location = await Location.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
+    if (location) {
+      res.status(200).json({
+        success: true,
+        data: location
+      });
+    } else {
+      res.status(404).send();
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+//@desc       Delete location
+//@route      Delete /api/v1/locations/:id
+//@access     Private
+exports.deleteLocation = async (req, res, next) => {
+  try {
+    const location = await Location.findByIdAndDelete(req.params.id);
+    if (location) {
+      res.status(200).json({
+        success: true
+      });
+    } else {
+      res.status(404).send(`Could not find location with an Id: ${req.params.id}`);
+    }
+  } catch (error) {
+    next(error);
+  }
+};

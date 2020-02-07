@@ -2,7 +2,9 @@ const express = require('express');
 const {
   getLocations,
   getLocation,
-  createLocation
+  createLocation,
+  updateLocation,
+  deleteLocation
 } = require('../controllers/locations');
 
 const Location = require('../models/Location');
@@ -14,6 +16,8 @@ router.route('/')
   .post(createLocation)
 
 router.route('/:id')
-  .get(getLocation);
+  .get(getLocation)
+  .put(updateLocation)
+  .delete(deleteLocation)
 
 module.exports = router
