@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan')
 const dotenv = require('dotenv');
 const colors = require('colors');
+const errorHandler = require('./middleware/error');
 
 const connectDB = require('./config/db')
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Mount routes
 app.use('/api/v1/locations', locations);
 
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
