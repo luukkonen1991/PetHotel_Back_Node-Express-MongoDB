@@ -1,0 +1,10 @@
+{
+  "_id": "5d713995b721c3bb35c1f5d0",
+  "title": "Nice place for doggos and lil kitties",
+  "description": "I have a very nice place where doggos lil kitties and play",
+  "phone": "(111) 222-2222",
+  "email": "doggopalace3@gmail.com",
+  "address": "233 Bay State Rd Boston MA 02215",
+  "animalTypes": ["Dogs", "Cats"],
+  "services": ["Food", "Walking"]
+}

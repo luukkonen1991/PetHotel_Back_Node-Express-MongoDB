@@ -64,7 +64,7 @@ const LocationSchema = new mongoose.Schema({
 LocationSchema.pre('save', function (next) {
   this.slug = slugify(this.title, { lower: true });
   next();
-})
+});
 
 
 module.exports = mongoose.model('Location', LocationSchema);
