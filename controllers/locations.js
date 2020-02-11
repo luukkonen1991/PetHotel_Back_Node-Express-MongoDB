@@ -45,7 +45,7 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
 
   // Pagination (radix 10 = decimal)
   const page = parseInt(req.query.page, 10) || 1;
-  const limit = parseInt(req.query.limit, 10) || 5;
+  const limit = parseInt(req.query.limit, 10);
   const startIndex = (page - 1) * limit;
   const endIndex = (page) * limit;
   const total = await Location.countDocuments();
@@ -99,7 +99,7 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 //@route      POST /api/v1/locations
 //@access     Private
 exports.createLocation = asyncHandler(async (req, res, next) => {
-  const location = await Location.create(req.body)
+  const location = await Location.create(req.body);
   res.status(201).json({
     success: true,
     data: location

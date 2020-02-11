@@ -20,9 +20,9 @@ const LocationSchema = new mongoose.Schema({
     required: [true, 'Please add an address'],
   },
   costType: {
-    type: [String],
-    required: [true, 'Please add the cost type'],
-    emun: [
+    type: String,
+    required: [true, 'Please add cost type by hours or days'],
+    enum: [
       'Hour',
       'Day'
     ]
@@ -41,7 +41,7 @@ const LocationSchema = new mongoose.Schema({
   },
   animalTypes: {
     type: [String],
-    required: true,
+    required: [true, 'Please add animal types'],
     enum: [
       'Dogs',
       'Cats',
@@ -50,7 +50,7 @@ const LocationSchema = new mongoose.Schema({
   },
   services: {
     type: [String],
-    required: true,
+    required: [true, 'Please add services you provide'],
     enum: [
       'Food',
       'Toys',

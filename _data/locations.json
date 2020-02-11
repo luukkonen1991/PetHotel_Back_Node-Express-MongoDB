@@ -1,6 +1,5 @@
 [
   {
-    "_id": "5d713995b721c3bb38c1f5d0",
     "title": "Nice place for doggos",
     "description": "I have a very nice place where doggos can play",
     "phone": "(111) 111-1111",
@@ -8,11 +7,10 @@
     "address": "233 Bay State Rd Boston MA 02215",
     "animalTypes": ["Dogs"],
     "services": ["Food", "Walking"],
-    "costType": ["Hour"],
+    "costType": "Hour",
     "costAmount": 15
   },
   {
-    "_id": "5d713995b721c3bb33c1f5d0",
     "title": "Nice place for catssss",
     "description": "I have a very nice place where catss can play",
     "phone": "(111) 333-3333",
@@ -20,11 +18,10 @@
     "address": "233 Bay State Rd Boston MA 02215",
     "animalTypes": ["Dogs"],
     "services": ["Food", "Walking"],
-    "costType": ["Day"],
+    "costType": "Day",
     "costAmount": 50
   },
   {
-    "_id": "5d713995b721c3bb35c1f5d0",
     "title": "Nice place for doggos and lil kitties",
     "description": "I have a very nice place where doggos lil kitties and play",
     "phone": "(111) 222-2222",
@@ -32,7 +29,51 @@
     "address": "233 Bay State Rd Boston MA 02215",
     "animalTypes": ["Dogs", "Cats"],
     "services": ["Food", "Walking"],
-    "costType": ["Hour"],
+    "costType": "Hour",
+    "costAmount": 13
+  },
+  {
+    "title": "I like DOGSSSS",
+    "description": "I have a very nice place where doggos lil kitties and play",
+    "phone": "(111) 222-2222",
+    "email": "doggopalace3@gmail.com",
+    "address": "233 Bay State Rd Boston MA 02215",
+    "animalTypes": ["Dogs", "Cats"],
+    "services": ["Food", "Walking"],
+    "costType": "Day",
+    "costAmount": 1
+  },
+  {
+    "title": "I LIKE YOUR DOG :O",
+    "description": "I have a very nice place where doggos lil kitties and play",
+    "phone": "(111) 222-2222",
+    "email": "doggopalace3@gmail.com",
+    "address": "233 Bay State Rd Boston MA 02215",
+    "animalTypes": ["Dogs", "Cats"],
+    "services": ["Food", "Walking"],
+    "costType": "Day",
     "costAmount": 17
+  },
+  {
+    "title": "TEAM CATS4EVA",
+    "description": "I have a very nice place where doggos lil kitties and play",
+    "phone": "(111) 222-2222",
+    "email": "doggopalace3@gmail.com",
+    "address": "233 Bay State Rd Boston MA 02215",
+    "animalTypes": ["Dogs", "Cats"],
+    "services": ["Food", "Walking"],
+    "costType": "Hour",
+    "costAmount": 8
+  },
+  {
+    "title": "YOLOGNESE",
+    "description": "I have a very nice place where doggos lil kitties and play",
+    "phone": "(111) 222-2222",
+    "email": "doggopalace3@gmail.com",
+    "address": "233 Bay State Rd Boston MA 02215",
+    "animalTypes": ["Dogs", "Cats"],
+    "services": ["Food", "Walking"],
+    "costType": "Hour",
+    "costAmount": 99.99
   }
 ]
