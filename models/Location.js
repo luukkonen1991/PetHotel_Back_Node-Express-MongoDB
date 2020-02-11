@@ -19,6 +19,18 @@ const LocationSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add an address'],
   },
+  costType: {
+    type: [String],
+    required: [true, 'Please add the cost type'],
+    emun: [
+      'Hour',
+      'Day'
+    ]
+  },
+  costAmount: {
+    type: Number,
+    required: [true, 'Please add the cost amount']
+  },
   location: {
     formattedAddress: String,
     street: String,
