@@ -45,7 +45,7 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
 
   // Pagination (radix 10 = decimal)
   const page = parseInt(req.query.page, 10) || 1;
-  const limit = parseInt(req.query.limit, 10);
+  const limit = parseInt(req.query.limit, 10) || 5;
   const startIndex = (page - 1) * limit;
   const endIndex = (page) * limit;
   const total = await Location.countDocuments();
@@ -73,6 +73,7 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
   }
 
   res.status(200).json({
+    total: total,
     success: true,
     count: locations.length,
     pagination: pagination,
