@@ -4,20 +4,23 @@ const {
   getLocation,
   createLocation,
   updateLocation,
-  deleteLocation
+  deleteLocation,
+  locationPhotoUpload
 } = require('../controllers/locations');
 
-const Location = require('../models/Location');
 
 const router = express.Router();
 
+router.route('/:id/photo')
+  .put(locationPhotoUpload);
+
 router.route('/')
   .get(getLocations)
-  .post(createLocation)
+  .post(createLocation);
 
 router.route('/:id')
   .get(getLocation)
   .put(updateLocation)
-  .delete(deleteLocation)
+  .delete(deleteLocation);
 
 module.exports = router
