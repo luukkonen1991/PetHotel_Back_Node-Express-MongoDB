@@ -14,13 +14,6 @@
     "password": "123456"
   },
   {
-    "_id": "5d7a514b5d2c12c7449be044",
-    "name": "User Account",
-    "email": "user@gmail.com",
-    "role": "user",
-    "password": "123456"
-  },
-  {
     "_id": "5d7a514b5d2c12c7449be045",
     "name": "John Doe",
     "email": "john@gmail.com",
@@ -49,10 +42,17 @@
     "password": "123456"
   },
   {
+    "_id": "5d7a514b5d2c12c7449be044",
+    "name": "User Account",
+    "email": "user@gmail.com",
+    "role": "publisher",
+    "password": "123456"
+  },
+  {
     "_id": "5c8a1d5b0190b214360dc033",
     "name": "Greg Harris",
     "email": "greg@gmail.com",
-    "role": "user",
+    "role": "publisher",
     "password": "123456"
   },
   {
