@@ -65,7 +65,7 @@ const LocationSchema = new mongoose.Schema({
   photo: {
     //the file name is string
     type: String,
-    default: 'no-photo.jpg'
+    default: 'no-photo.png'
   },
   createdAt: {
     type: Date,
