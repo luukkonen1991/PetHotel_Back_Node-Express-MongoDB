@@ -13,7 +13,7 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
   // Copy req.query
   const reqQuery = { ...req.query };
 
-  // Fields to exlude 
+  // Fields to exlude
   const removeFields = ['select', 'sort', 'page', 'limit'];
 
   // Loop over removeFields and delete them from reqQuery
