@@ -4,8 +4,8 @@ const morgan = require('morgan')
 const dotenv = require('dotenv');
 const colors = require('colors');
 const fileupload = require('express-fileupload');
+const cors = require('cors');
 const errorHandler = require('./middleware/error');
-
 const connectDB = require('./config/db')
 
 // Load env vars
@@ -32,6 +32,9 @@ if (process.env.NODE_ENV === 'development') {
 
 // File uploading
 app.use(fileupload());
+
+// Enable CORS
+app.use(cors());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
