@@ -12,18 +12,20 @@ const Location = require('../models/Location');
 
 const advancedResults = require('../middleware/advancedResults');
 
+const { protect } = require('../middleware/auth');
+
 const router = express.Router();
 
 router.route('/:id/photo')
-  .put(locationPhotoUpload);
+  .put(protect, locationPhotoUpload);
 
 router.route('/')
   .get(advancedResults(Location), getLocations)
-  .post(createLocation);
+  .post(protect, createLocation);
 
 router.route('/:id')
   .get(getLocation)
-  .put(updateLocation)
-  .delete(deleteLocation);
+  .put(protect, updateLocation)
+  .delete(protect, deleteLocation);
 
 module.exports = router;
