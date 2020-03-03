@@ -1,12 +1,12 @@
-const path = require('path')
+const path = require('path');
 const express = require('express');
-const morgan = require('morgan')
+const morgan = require('morgan');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 const errorHandler = require('./middleware/error');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -16,7 +16,7 @@ connectDB();
 
 // Route files
 const locations = require('./routes/locations');
-
+const auth = require('./routes/auth');
 
 const app = express();
 
@@ -41,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routes
 app.use('/api/v1/locations', locations);
+app.use('/api/v1/auth', auth);
 
 app.use(errorHandler);
 
@@ -55,5 +56,5 @@ const server = app.listen(PORT, () => {
 process.on('unhandledRejection', (error, promise) => {
   console.log(`Error: ${error.message}`.red);
   // Close server & exit process
-  server.close(() => process.exit(1))
-})
+  server.close(() => process.exit(1));
+});
