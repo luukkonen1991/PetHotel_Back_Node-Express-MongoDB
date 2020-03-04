@@ -30,6 +30,17 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 //@route      POST /api/v1/locations
 //@access     Private
 exports.createLocation = asyncHandler(async (req, res, next) => {
+  // Add user to req.body// req.user is the logged in user
+  req.body.user = req.user.id;
+
+  // Check for published location
+  const publishedLocation = await Location.findOne({ user: req.user.id });
+
+  // If the user is not an admin, they can only add one location
+  if (publishedLocation && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a location`, 400));
+  }
+
   const location = await Location.create(req.body);
   res.status(201).json({
     success: true,
@@ -41,14 +52,23 @@ exports.createLocation = asyncHandler(async (req, res, next) => {
 //@route      PUT /api/v1/locations/:id
 //@access     Private
 exports.updateLocation = asyncHandler(async (req, res, next) => {
-  const location = await Location.findByIdAndUpdate(req.params.id, req.body, {
+  let location = await Location.findById(req.params.id);
+
+  if (!location) {
+    return next(new ErrorResponse(`Location not found with id of ${req.params.id}`, 404));
+  }
+
+  // Make sure user is location owner
+  if (location.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.user.id} is not authorized to update this location`, 401));
+  }
+
+  location = await Location.findOneAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
   });
 
-  if (!location) {
-    return next(new ErrorResponse(`Location not found with id of ${req.params.id}`, 404));
-  } res.status(200).json({
+  res.status(200).json({
     success: true,
     data: location
   });
