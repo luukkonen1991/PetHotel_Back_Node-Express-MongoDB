@@ -76,6 +76,8 @@ const sendTokenResponse = (user, statusCode, res) => {
     httpOnly: true
   };
 
+  console.log(0);
+
   if (process.env.NODE_ENV === 'production') {
     options.secure = true;
   }
