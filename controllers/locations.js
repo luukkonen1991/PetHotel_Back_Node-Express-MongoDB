@@ -63,7 +63,7 @@ exports.updateLocation = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`User ${req.user.id} is not authorized to update this location`, 401));
   }
 
-  location = await Location.findOneAndUpdate(req.params.id, req.body, {
+  location = await Location.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
   });

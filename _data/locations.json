@@ -45,8 +45,7 @@
 		"email": "doggopalace3@gmail.com",
 		"address": "233 Bay State Rd Boston MA 02215",
 		"animalTypes": [
-			"Dogs",
-			"Cats"
+			"Dogs"
 		],
 		"services": [
 			"Food",
