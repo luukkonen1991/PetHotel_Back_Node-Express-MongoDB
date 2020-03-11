@@ -88,7 +88,37 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
   // const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to \n\n ${resetUrl}`;
   // const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please copy the token below and insert it into the RESET TOKEN field \n\n ${resetToken}`;
 
-  const message = `<div><h4>You are receiving this email because you (or someone else) has requested the reset of a password.</h4><p>To reset your password please click here: <a href="http://localhost:4200/resetpassword/${resetToken}">Reset your password here</a></p></div>`;
+  const message = `<html>
+  <head>
+  <title>PetHotel</title>
+  <style>
+  .button {
+  background-color: #1c87c9;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 10px;
+  }
+</style>
+</head>
+<body style="max-width: 40rem;min-width: 20rem;margin: 5rem auto;">
+<div>
+<h2 style="text-align: center;">
+You are receiving this email because you (or someone else) has requested the reset of a password.</h2>
+<h4 style="text-align: center;">To reset your password please click the button below
+<a style="display:block; margin: 5px auto;" href="http://localhost:4200/resetpassword/${resetToken}" class="button">Reset your password
+</a>
+</h4>
+</div>
+</body>
+</html>`;
 
   try {
     await sendEmail({
