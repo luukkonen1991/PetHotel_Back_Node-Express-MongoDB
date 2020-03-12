@@ -10,11 +10,10 @@ const {
 
 const Location = require('../models/Location');
 
-const advancedResults = require('../middleware/advancedResults');
-
-const { protect, authorize } = require('../middleware/auth');
-
 const router = express.Router();
+
+const advancedResults = require('../middleware/advancedResults');
+const { protect, authorize } = require('../middleware/auth');
 
 router.route('/:id/photo')
   .put(protect, authorize('publisher', 'admin'), locationPhotoUpload);
