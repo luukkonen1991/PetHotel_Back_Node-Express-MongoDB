@@ -27,6 +27,21 @@ const LocationSchema = new mongoose.Schema({
       'Day'
     ]
   },
+  phone: {
+    type: String,
+    unique: true,
+    required: [true, 'Please add phone number'],
+    maxlength: [20, 'Phone number can not be longer than 20 characters']
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: [true, 'Please add email'],
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Please add a valid email'
+    ]
+  },
   costAmount: {
     type: Number,
     required: [true, 'Please add the cost amount']
