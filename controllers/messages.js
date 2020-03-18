@@ -9,3 +9,26 @@ exports.getMessages = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
+//@desc       Get single message
+//@route      GET /api/v1/users/:id
+//@access     Private/Admin
+exports.getMessage = asyncHandler(async (req, res, next) => {
+  const message = await Message.findById(req.params.id);
+
+  res.status(200).json({
+    success: true,
+    data: message
+  });
+});
+
+//@desc       Create message
+//@route      Post /api/v1/users
+//@access     Public
+exports.createUser = asyncHandler(async (req, res, next) => {
+  const message = await Message.create(req.body);
+
+  res.status(201).json({
+    success: true,
+    data: message
+  });
+});
