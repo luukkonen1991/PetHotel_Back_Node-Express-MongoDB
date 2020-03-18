@@ -24,7 +24,7 @@ exports.getMessage = asyncHandler(async (req, res, next) => {
 //@desc       Create message
 //@route      Post /api/v1/messages
 //@access     Public
-exports.createUser = asyncHandler(async (req, res, next) => {
+exports.createMessage = asyncHandler(async (req, res, next) => {
   const message = await Message.create(req.body);
 
   res.status(201).json({
