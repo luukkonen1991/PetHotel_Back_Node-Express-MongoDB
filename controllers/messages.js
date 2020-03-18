@@ -8,3 +8,4 @@ const Message = require('../models/Message');
 exports.getMessages = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
+
