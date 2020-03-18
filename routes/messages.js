@@ -12,4 +12,6 @@ const advancedResults = require('../middleware/advancedResults');
 const { protect, authorize } = require('../middleware/auth');
 
 router.route('/')
-  .get(advancedResults(protect, authorize('admin'), Message), getMessages);
+  .get(protect, authorize('admin'), advancedResults(Message), getMessages);
+
+module.exports = router;

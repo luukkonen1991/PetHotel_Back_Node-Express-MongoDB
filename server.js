@@ -19,6 +19,7 @@ connectDB();
 const locations = require('./routes/locations');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
+const messages = require('./routes/messages');
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1/locations', locations);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
+app.use('/api/v1/messages', messages);
 
 app.use(errorHandler);
 
