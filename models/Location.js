@@ -60,7 +60,7 @@ const LocationSchema = new mongoose.Schema({
     enum: [
       'Dogs',
       'Cats',
-      'Others'
+      'Other'
     ]
   },
   services: {
