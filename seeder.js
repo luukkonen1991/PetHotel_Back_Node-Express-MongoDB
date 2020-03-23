@@ -12,6 +12,7 @@ dotenv.config({
 const Location = require('./models/Location');
 const User = require('./models/User');
 const Message = require('./models/Message');
+const Review = require('./models/Review');
 
 
 // Connect to DB
@@ -29,12 +30,15 @@ const users = JSON.parse(fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8
 
 const messages = JSON.parse(fs.readFileSync(`${__dirname}/_data/messages.json`, 'utf-8'));
 
+const reviews = JSON.parse(fs.readFileSync(`${__dirname}/_data/reviews.json`, 'utf-8'));
+
 // Import into DB
 const importData = async () => {
   try {
     await Location.create(locations);
     await User.create(users);
     await Message.create(messages);
+    await Review.create(reviews);
     console.log('Data imported...'.green.inverse);
     process.exit();
   } catch (error) {
@@ -48,6 +52,7 @@ const deleteData = async () => {
     await Location.deleteMany();
     await User.deleteMany();
     await Message.deleteMany();
+    await Review.deleteMany();
     console.log('Data destroyed...'.red.inverse);
     process.exit();
   } catch (error) {
