@@ -10,10 +10,16 @@ const {
 
 const Location = require('../models/Location');
 
+// Include other resource routers
+const reviewRouter = require('./reviews');
+
 const router = express.Router();
 
 const advancedResults = require('../middleware/advancedResults');
 const { protect, authorize } = require('../middleware/auth');
+
+// Re-route into other resource routes
+router.use('/:locationId/reviews', reviewRouter);
 
 router.route('/:id/photo')
   .put(protect, authorize('publisher', 'admin'), locationPhotoUpload);
