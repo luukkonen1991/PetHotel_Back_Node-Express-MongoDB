@@ -20,6 +20,7 @@ const locations = require('./routes/locations');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const messages = require('./routes/messages');
+const reviews = require('./routes/reviews');
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use('/api/v1/locations', locations);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/messages', messages);
+app.use('/api/v1/reviews', reviews);
 
 app.use(errorHandler);
 
