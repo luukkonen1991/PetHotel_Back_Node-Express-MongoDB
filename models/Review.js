@@ -60,13 +60,13 @@ ReviewSchema.statics.getAverageRating = async function (locationId) {
 };
 
 // Call getAverageRating after save
-ReviewSchema.post('save', function () {
-  this.constructor.getAverageRating(this.location);
+ReviewSchema.post('save', async function () {
+  await this.constructor.getAverageRating(this.location);
 });
 
 // Call getAverageRating before remove
-ReviewSchema.pre('remove', function () {
-  this.constructor.getAverageRating(this.location);
+ReviewSchema.pre('remove', async function () {
+  await this.constructor.getAverageRating(this.location);
 });
 
 module.exports = mongoose.model('Review', ReviewSchema);
