@@ -7,7 +7,7 @@ const Location = require('../models/Location');
 //@route      GET /api/v1/reviews
 //@route      GET /api/v1/locations/:locationId/reviews
 //@access     Public
-exports.getLocations = asyncHandler(async (req, res, next) => {
+exports.getReviews = asyncHandler(async (req, res, next) => {
   if (req.params.locationId) {
     const reviews = await Review.find({ location: req.params.locationId });
 
