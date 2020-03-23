@@ -41,7 +41,7 @@ exports.getReview = asyncHandler(async (req, res, next) => {
 });
 
 //@desc       Add singe review
-//@route      POST /api/v1/locations/:locationId/review
+//@route      POST /api/v1/locations/:locationId/reviews
 //@access     Private
 exports.addReview = asyncHandler(async (req, res, next) => {
   req.body.location = req.params.locationId;
