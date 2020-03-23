@@ -38,5 +38,25 @@ exports.getReview = asyncHandler(async (req, res, next) => {
     success: true,
     data: review
   });
+});
 
+//@desc       Add singe review
+//@route      POST /api/v1/locations/:locationId/review
+//@access     Private
+exports.addReview = asyncHandler(async (req, res, next) => {
+  req.body.location = req.params.locationId;
+  req.body.user = req.user.id;
+
+  const location = await Location.findById(req.params.locationId);
+
+  if (!location) {
+    return next(new ErrorResponse(`No location with the id of ${req.params.locationId}`, 404));
+  }
+
+  const review = await Review.create(req.body);
+
+  res.status(201).json({
+    success: true,
+    data: review
+  });
 });
