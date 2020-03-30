@@ -3,7 +3,7 @@ const advancedResults = (model) => async (req, res, next) => {
 
   // Copy req.query
   const reqQuery = { ...req.query };
-
+  console.log(reqQuery);
   // Fields to exlude
   const removeFields = ['select', 'sort', 'page', 'limit'];
 
@@ -12,9 +12,11 @@ const advancedResults = (model) => async (req, res, next) => {
 
   // Make query to string in order to manipulate it
   let queryStr = JSON.stringify(reqQuery);
+  console.log(queryStr);
 
   // Create operators ($gt, $gte, etc)
   queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in|or|and)\b/g, match => `$${match}`);
+  console.log(queryStr);
 
   // Finding resource
   query = model.find(JSON.parse(queryStr));
