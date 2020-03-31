@@ -15,18 +15,22 @@ const advancedResults = (model) => async (req, res, next) => {
   console.log(queryStr);
 
   // Create operators ($gt, $gte, etc)
-  queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in|or|and)\b/g, match => `$${match}`);
-  console.log(queryStr);
+  if (!req.query.autocomplete) {
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in|or|and)\b/g, match => `$${match}`);
 
-  // Finding resource
-  query = model.find(JSON.parse(queryStr));
+    // Finding resource
+    query = model.find(JSON.parse(queryStr));
+  }
+
 
   // Location autocomplete
   if (req.query.autocomplete) {
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in|or|and)\b/g, match => `$${match}`);
     let locationStr = req.query.autocomplete;
     let locationArr = locationStr.split(',');
-    let queryObj = [{ "location.city": locationArr[0] }, { "location.zipcode": locationArr[1] }];
-    query = model.find({ $or: queryObj });
+    let queryObj = [{ "location.city": locationArr[0] }, { "location.city": locationArr[1] }];
+    console.log({ $and: [JSON.parse(queryStr), { $or: queryObj }] });
+    query = model.find({ $and: [JSON.parse(queryStr), { $or: queryObj }] });
   }
 
   // Select Fields
