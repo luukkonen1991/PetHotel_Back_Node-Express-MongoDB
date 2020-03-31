@@ -5,7 +5,7 @@ const advancedResults = (model) => async (req, res, next) => {
   const reqQuery = { ...req.query };
   console.log(reqQuery);
   // Fields to exlude
-  const removeFields = ['select', 'sort', 'page', 'limit'];
+  const removeFields = ['select', 'sort', 'page', 'limit', 'autocomplete'];
 
   // Loop over removeFields and delete them from reqQuery
   removeFields.forEach(param => delete reqQuery[param]);
@@ -20,6 +20,14 @@ const advancedResults = (model) => async (req, res, next) => {
 
   // Finding resource
   query = model.find(JSON.parse(queryStr));
+
+  // Location autocomplete
+  if (req.query.autocomplete) {
+    let locationStr = req.query.autocomplete;
+    let locationArr = locationStr.split(',');
+    let queryObj = [{ "location.city": locationArr[0] }, { "location.zipcode": locationArr[1] }];
+    query = model.find({ $or: queryObj });
+  }
 
   // Select Fields
   if (req.query.select) {
