@@ -48,11 +48,33 @@ exports.updateUser = asyncHandler(async (req, res, next) => {
   });
 });
 
+// //@desc       Delete user
+// //@route      DELETE /api/v1/users/:id
+// //@access     Private/Admin
+// exports.deleteUser = asyncHandler(async (req, res, next) => {
+//   const user = await User.findByIdAndDelete(req.params.id);
+
+//   res.status(200).json({
+//     success: true,
+//     data: {}
+//   });
+// });
+
 //@desc       Delete user
 //@route      DELETE /api/v1/users/:id
-//@access     Private/Admin
+//@access     Private
 exports.deleteUser = asyncHandler(async (req, res, next) => {
-  const user = await User.findByIdAndDelete(req.params.id);
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
+  }
+
+  if (user._id.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User ${req.user.id} is not authorized to delete this user`, 401));
+  }
+
+  user.remove();
 
   res.status(200).json({
     success: true,
