@@ -6,6 +6,7 @@ const Location = require('../models/Location');
 //@desc       Get all reviews
 //@route      GET /api/v1/reviews
 //@route      GET /api/v1/locations/:locationId/reviews
+//@route      GET /api/v1/users/:userId/reviews
 //@access     Public
 exports.getReviews = asyncHandler(async (req, res, next) => {
   if (req.params.locationId) {
@@ -16,7 +17,19 @@ exports.getReviews = asyncHandler(async (req, res, next) => {
       count: reviews.length,
       data: reviews
     });
-  } else {
+  }
+
+  if (req.params.userId) {
+    const reviews = await Review.find({ user: req.params.userId });
+
+    return res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews
+    });
+  }
+
+  else {
     res.status(200).json(res.advancedResults);
   }
 });

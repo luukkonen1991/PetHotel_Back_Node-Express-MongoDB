@@ -9,10 +9,16 @@ const {
 
 const User = require('../models/User');
 
+// Include other resource routers
+const reviewRouter = require('./reviews');
+
 const router = express.Router();
 
 const advancedResults = require('../middleware/advancedResults');
 const { protect, authorize } = require('../middleware/auth');
+
+// Re-route into other resource routers
+router.use('/:userId/reviews', reviewRouter);
 
 // // Anything below this statement will use protect middleware
 // router.use(protect);
