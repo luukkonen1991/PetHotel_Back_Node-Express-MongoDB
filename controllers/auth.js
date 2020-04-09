@@ -1,7 +1,8 @@
 const crypto = require('crypto');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
-const sendEmail = require('../utils/sendEmail');
+// const sendEmail = require('../utils/sendEmail');
+const sendEmailProd = require('../utils/sendEmailProd');
 const User = require('../models/User');
 
 
@@ -176,7 +177,7 @@ You are receiving this email because you (or someone else) has requested the res
 </html>`;
 
   try {
-    await sendEmail({
+    await sendEmailProd({
       email: user.email,
       subject: 'Password reset token',
       message: message
