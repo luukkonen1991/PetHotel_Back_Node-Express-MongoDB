@@ -1,6 +1,6 @@
 # PetHotel API
 
-> Backend API for PetHotel application, which is a webiste where users can find or become pet sitters.
+> Backend API for PetHotel application, which is a webiste where users can find or become pet sitters. The server is hosted in domain <www.pethotelapi.com> with documentation.
 
 ## Usage
 Rename "config/config.env.env" to "config/config.env" and update the values/settings to your own
